@@ -23,6 +23,6 @@ class HostRedirectorTest < ActionController::TestCase
     request.host = "127.0.0.1"
 
     get :index
-    assert_redirected_to "http://localhost/"
+    assert_redirected_to "http://localhost/my"
   end
 end
