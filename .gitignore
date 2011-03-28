@@ -1,0 +1,3 @@
+test/rails_app/db/*.sqlite3
+test/rails_app/log/*.log
+tmp/**/*
