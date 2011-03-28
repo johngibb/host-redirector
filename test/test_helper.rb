@@ -18,3 +18,8 @@ end
 def config
   RailsApp::Application.config
 end
+
+def assert_permanently_redirected_to(url)
+  assert_response :moved_permanently
+  assert_redirected_to url
+end

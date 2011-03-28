@@ -13,7 +13,8 @@ module HostRedirector
         end
 
         unless request.host == config.host
-          redirect_to "#{request.protocol}#{config.host}#{request.port_string}#{request.fullpath}"
+          url = "#{request.protocol}#{config.host}#{request.port_string}#{request.fullpath}"
+          redirect_to url, :status => :moved_permanently
         end
       end
     end
