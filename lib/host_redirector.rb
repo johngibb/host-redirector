@@ -7,7 +7,10 @@ module HostRedirector
     def forces_redirect_to_host
       send :before_filter do
         config = Rails.application.config
-        raise "Please specify a host in the site configuration" unless config.respond_to? :host
+        unless config.respond_to? :host
+          logger.warn "HostRedirector: Please specify a host in the site configuration" 
+          return
+        end
 
         unless request.host == config.host
           redirect_to "#{request.protocol}#{config.host}#{request.port_string}#{request.request_uri}"
