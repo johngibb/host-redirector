@@ -19,10 +19,24 @@ class HostRedirectorTest < ActionController::TestCase
     assert_response :success
   end
   
-  test "should redirect" do
+  test "should redirect ip" do
     request.host = "127.0.0.1"
 
     get :index
     assert_redirected_to "http://localhost/my"
+  end
+  
+  test "should redirect hostname" do
+    request.host = "blah"
+
+    get :index
+    assert_redirected_to "http://localhost/my"
+  end
+  
+  test "should redirect with port" do
+    request.host = "blah:3000"
+
+    get :index
+    assert_redirected_to "http://localhost:3000/my"
   end
 end
