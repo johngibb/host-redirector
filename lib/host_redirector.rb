@@ -13,7 +13,7 @@ module HostRedirector
         end
 
         unless request.host == config.host
-          redirect_to "#{request.protocol}#{config.host}#{request.port_string}#{request.request_uri}"
+          redirect_to "#{request.protocol}#{config.host}#{request.port_string}#{request.fullpath}"
         end
       end
     end
